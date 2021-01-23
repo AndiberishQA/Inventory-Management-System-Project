@@ -86,6 +86,8 @@ public class Ims {
 	 * @param username
 	 * @param password
 	 */
+
+	// init of server connection
 	public void init(String username, String password) {
 		init("jdbc:mysql://localhost:3306/ims", username, password, "src/main/resources/sql-schema.sql");
 	}
