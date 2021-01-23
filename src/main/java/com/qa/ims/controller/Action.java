@@ -1,6 +1,7 @@
 package com.qa.ims.controller;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.utils.Utils;
 
@@ -14,7 +15,7 @@ public enum Action {
 	UPDATE("To change an item already in the database"), DELETE("To remove an item from the database"),
 	RETURN("To return to domain selection");
 
-	public static final Logger LOGGER = Logger.getLogger(Action.class);
+	public static final Logger LOGGER = LogManager.getLogger(Action.class);
 
 	private String description;
 

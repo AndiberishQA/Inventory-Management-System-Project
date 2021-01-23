@@ -8,7 +8,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.controller.Action;
 import com.qa.ims.controller.CrudController;
@@ -20,7 +21,7 @@ import com.qa.ims.utils.Utils;
 
 public class Ims {
 
-	public static final Logger LOGGER = Logger.getLogger(Ims.class);
+	public static final Logger LOGGER = LogManager.getLogger(Ims.class);
 
 	public void imsSystem() {
 		LOGGER.info("What is your username");
@@ -86,7 +87,7 @@ public class Ims {
 	 * @param password
 	 */
 	public void init(String username, String password) {
-		init("jdbc:mysql://localhost:3306", username, password, "src/main/resources/sql-schema.sql");
+		init("jdbc:mysql://localhost:3306/ims", username, password, "src/main/resources/sql-schema.sql");
 	}
 
 	public String readFile(String fileLocation) {

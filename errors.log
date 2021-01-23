@@ -1,0 +1,19 @@
+20210123 19:56:54 INFO  [main] ims.Ims Ims.java27 - What is your username
+20210123 19:57:00 INFO  [main] ims.Ims Ims.java29 - What is your password
+20210123 19:57:02 INFO  [main] ims.Ims Ims.java34 - Which entity would you like to use?
+20210123 19:57:02 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210123 19:57:02 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210123 19:57:02 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210123 19:57:02 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210123 19:57:04 INFO  [main] ims.Ims Ims.java38 - What would you like to do with customer:
+20210123 19:57:04 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
+20210123 19:57:04 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
+20210123 19:57:04 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
+20210123 19:57:04 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
+20210123 19:57:04 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
+20210123 19:57:06 INFO  [main] controller.CustomerController CustomerController.java47 - Please enter a first name
+20210123 19:57:09 INFO  [main] controller.CustomerController CustomerController.java49 - Please enter a surname
+20210123 19:57:13 DEBUG [main] dao.CustomerDaoMysql CustomerDaoMysql.java73 - [Ljava.lang.StackTraceElement;@5286c33a
+20210123 19:57:13 ERROR [main] dao.CustomerDaoMysql CustomerDaoMysql.java74 - Column 'id' not found.
+20210123 19:57:13 INFO  [main] controller.CustomerController CustomerController.java52 - Customer created
+20210123 19:57:13 INFO  [main] ims.Runner Runner.java13 - Goodbye

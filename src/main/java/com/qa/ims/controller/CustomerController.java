@@ -2,7 +2,8 @@ package com.qa.ims.controller;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.services.CrudServices;
@@ -12,28 +13,27 @@ import com.qa.ims.utils.Utils;
  * Takes in customer details for CRUD functionality
  *
  */
-public class CustomerController implements CrudController<Customer>{
+public class CustomerController implements CrudController<Customer> {
 
-	public static final Logger LOGGER = Logger.getLogger(CustomerController.class);
-	
+	public static final Logger LOGGER = LogManager.getLogger(CustomerController.class);
+
 	private CrudServices<Customer> customerService;
-	
+
 	public CustomerController(CrudServices<Customer> customerService) {
 		this.customerService = customerService;
 	}
-	
 
 	String getInput() {
 		return Utils.getInput();
 	}
-	
+
 	/**
 	 * Reads all customers to the logger
 	 */
 	@Override
 	public List<Customer> readAll() {
 		List<Customer> customers = customerService.readAll();
-		for(Customer customer: customers) {
+		for (Customer customer : customers) {
 			LOGGER.info(customer.toString());
 		}
 		return customers;
@@ -45,10 +45,10 @@ public class CustomerController implements CrudController<Customer>{
 	@Override
 	public Customer create() {
 		LOGGER.info("Please enter a first name");
-		String firstName = getInput();
+		String first_name = getInput();
 		LOGGER.info("Please enter a surname");
 		String surname = getInput();
-		Customer customer = customerService.create(new Customer(firstName, surname));
+		Customer customer = customerService.create(new Customer(first_name, surname));
 		LOGGER.info("Customer created");
 		return customer;
 	}
@@ -59,12 +59,12 @@ public class CustomerController implements CrudController<Customer>{
 	@Override
 	public Customer update() {
 		LOGGER.info("Please enter the id of the customer you would like to update");
-		Long id = Long.valueOf(getInput());
+		Long Customer_id = Long.valueOf(getInput());
 		LOGGER.info("Please enter a first name");
-		String firstName = getInput();
+		String first_name = getInput();
 		LOGGER.info("Please enter a surname");
 		String surname = getInput();
-		Customer customer = customerService.update(new Customer(id, firstName, surname));
+		Customer customer = customerService.update(new Customer(Customer_id, first_name, surname));
 		LOGGER.info("Customer Updated");
 		return customer;
 	}
@@ -75,8 +75,8 @@ public class CustomerController implements CrudController<Customer>{
 	@Override
 	public void delete() {
 		LOGGER.info("Please enter the id of the customer you would like to delete");
-		Long id = Long.valueOf(getInput());
-		customerService.delete(id);
+		Long Customer_id = Long.valueOf(getInput());
+		customerService.delete(Customer_id);
 	}
-	
+
 }
