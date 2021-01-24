@@ -1,19 +1,47 @@
-20210123 21:49:59 INFO  [main] ims.Ims Ims.java27 - What is your username
-20210123 21:50:01 INFO  [main] ims.Ims Ims.java29 - What is your password
-20210123 21:50:03 INFO  [main] ims.Ims Ims.java34 - Which entity would you like to use?
-20210123 21:50:03 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20210123 21:50:03 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20210123 21:50:03 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20210123 21:50:03 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20210123 21:50:04 INFO  [main] ims.Ims Ims.java38 - What would you like to do with customer:
-20210123 21:50:04 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
-20210123 21:50:04 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
-20210123 21:50:04 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
-20210123 21:50:04 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
-20210123 21:50:04 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
-20210123 21:50:05 INFO  [main] controller.CustomerController CustomerController.java47 - Please enter a first name
-20210123 21:50:06 INFO  [main] controller.CustomerController CustomerController.java49 - Please enter a surname
-20210123 21:50:07 DEBUG [main] dao.CustomerDaoMysql CustomerDaoMysql.java73 - [Ljava.lang.StackTraceElement;@5286c33a
-20210123 21:50:07 ERROR [main] dao.CustomerDaoMysql CustomerDaoMysql.java74 - Column 'id' not found.
-20210123 21:50:07 INFO  [main] controller.CustomerController CustomerController.java52 - Customer created
-20210123 21:50:07 INFO  [main] ims.Runner Runner.java13 - Goodbye
+20210124 04:25:20 INFO  [main] ims.Ims Ims.java31 - What is your username
+20210124 04:25:22 INFO  [main] ims.Ims Ims.java33 - What is your password
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1335)
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2108)
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1245)
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.qa.ims.Ims.init(Ims.java:138)
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.qa.ims.Ims.init(Ims.java:109)
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.qa.ims.Ims.ImsSystem(Ims.java:36)
+20210124 04:25:23 DEBUG [main] ims.Ims Ims.java143 - com.qa.ims.Runner.main(Runner.java:12)
+20210124 04:25:23 ERROR [main] ims.Ims Ims.java145 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+20210124 04:25:23 INFO  [main] ims.Ims Ims.java40 - Which entity would you like to use?
+20210124 04:25:23 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210124 04:25:23 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210124 04:25:23 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210124 04:25:23 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210124 04:25:26 INFO  [main] ims.Ims Ims.java50 - What would you like to do with customer:
+20210124 04:25:26 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
+20210124 04:25:26 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
+20210124 04:25:26 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
+20210124 04:25:26 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
+20210124 04:25:26 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
+20210124 04:25:28 INFO  [main] controller.CustomerController CustomerController.java47 - Please enter a first name
+20210124 04:25:30 INFO  [main] controller.CustomerController CustomerController.java49 - Please enter a surname
+20210124 04:25:31 INFO  [main] controller.CustomerController CustomerController.java52 - Customer created
+20210124 04:25:31 INFO  [main] ims.Ims Ims.java40 - Which entity would you like to use?
+20210124 04:25:31 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210124 04:25:31 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210124 04:25:31 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210124 04:25:31 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210124 04:25:35 INFO  [main] ims.Ims Ims.java50 - What would you like to do with item:
+20210124 04:25:35 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
+20210124 04:25:35 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
+20210124 04:25:35 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
+20210124 04:25:35 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
+20210124 04:25:35 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
+20210124 04:25:37 INFO  [main] controller.ItemController ItemController.java43 - Please enter the name of the item
+20210124 04:25:39 INFO  [main] controller.ItemController ItemController.java45 - Please enter the Price of the item
+20210124 04:25:41 INFO  [main] controller.ItemController ItemController.java47 - Please enter the amount of Quantity for this item
+20210124 04:25:42 INFO  [main] controller.ItemController ItemController.java50 - Item created
+20210124 04:25:42 INFO  [main] ims.Ims Ims.java40 - Which entity would you like to use?
+20210124 04:25:42 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210124 04:25:42 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210124 04:25:42 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210124 04:25:42 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
