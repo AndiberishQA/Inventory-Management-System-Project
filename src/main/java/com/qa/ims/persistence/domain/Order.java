@@ -1,57 +1,55 @@
 package com.qa.ims.persistence.domain;
 
-import java.sql.Array;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
 
-	private long Order_id = 0;
-	private long Customer_id = 0;
-	private List<Item> items = new ArrayList<>();
-	private long TotalOrderCost;
+	private Long Order_id;
+	private Long Customer_id;
+	private List<Item> Item_id = new ArrayList<>();
+	private Long Quantity;
 
 	// constructors
-	public Order(long id, long customer_id) {
+	public Order(Long id, Long customer_id) {
 		super();
 		this.Order_id = id;
 		this.Customer_id = customer_id;
 	}
 
-	public Order(long customer_id) {
+	public Order(Long customer_id) {
 		super();
 		this.Customer_id = customer_id;
 	}
 
-	public Order(long id, List<Item> items) {
+	public Order(Long id, List<Item> item_id) {
 		super();
 		this.Order_id = id;
-		this.items = items;
+		this.Item_id = item_id;
 	}
 
-	public Order(long id, long customer_id, List<Item> items) {
+	public Order(Long id, Long customer_id, List<Item> item_id) {
 		super();
 		this.Order_id = id;
 		this.Customer_id = customer_id;
-		this.items = items;
+		this.Item_id = item_id;
 	}
 
-	public Order(long id, long customer_id, List<Item> items, Long totalOrderCost) {
+	public Order(Long id, Long customer_id, List<Item> items, Long quantity) {
 		super();
 		this.Order_id = id;
 		this.Customer_id = customer_id;
-		this.items = items;
-		this.TotalOrderCost = totalOrderCost;
+		this.Item_id = items;
+		this.Quantity = quantity;
+
 	}
 
 	// Generate getters & setters
-	public long getId() {
+	public long getOrder_Id() {
 		return Order_id;
 	}
 
-	public void setId(long id) {
+	public void setOrder_Id(Long id) {
 		this.Order_id = id;
 	}
 
@@ -59,43 +57,30 @@ public class Order {
 		return Customer_id;
 	}
 
-	public void setCustomerId(long customer_id) {
+	public void setCustomerId(Long customer_id) {
 		this.Customer_id = customer_id;
 	}
 
 	public List<Item> getItems() {
-		return items;
+		return Item_id;
 	}
 
 	public void setItems(List<Item> items) {
-		this.items = items;
+		this.Item_id = items;
 	}
 
-	public long getTotalOrderCost() {
-		return TotalOrderCost;
+	public Long getQuantity() {
+		return Quantity;
 	}
 
-	public void setTotalOrderCost(long totalOrderCost) {
-		this.TotalOrderCost = totalOrderCost;
-	}
-
-	@SuppressWarnings("unchecked")
-	public static Order convert(ResultSet resultSet) throws SQLException {
-		if (resultSet.next()) {
-			long Order_id = resultSet.getLong("Order_id");
-			long Customer_id = resultSet.getLong("Customer_id");
-			Array items = resultSet.getArray("Item_id");
-			return new Order(Order_id, Customer_id, (List<Item>) items);
-		}
-
-		return null;
-
+	public void setQuantity(Long quantity) {
+		Quantity = quantity;
 	}
 
 	@Override
 	public String toString() {
-		return "Order id: " + Order_id + ", Customer id: " + Customer_id + ", items: " + items + ", Total Order Cost:"
-				+ TotalOrderCost;
+		return "Order [Order_id=" + Order_id + ", Customer_id=" + Customer_id + ", Item_id=" + Item_id + ", Quantity="
+				+ Quantity + "]";
 	}
 
 }

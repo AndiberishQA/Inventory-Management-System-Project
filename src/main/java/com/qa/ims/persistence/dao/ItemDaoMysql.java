@@ -35,12 +35,14 @@ public class ItemDaoMysql implements Dao<Item> {
 		this.password = password;
 	}
 
-	Item itemFromResultSet(ResultSet resultSet) throws SQLException {
+	@Override
+	public Item domainFromResultSet(ResultSet resultSet) throws SQLException {
 		Long Item_id = resultSet.getLong("Item_id");
 		String Item_Name = resultSet.getString("Item_Name");
 		Long Price = resultSet.getLong("Price");
 		Long Quantity = resultSet.getLong("Quantity");
 		return new Item(Item_id, Item_Name, Price, Quantity);
+
 	}
 
 //	 The read all function reads all items from database and returns
@@ -53,7 +55,7 @@ public class ItemDaoMysql implements Dao<Item> {
 				ResultSet resultSet = statement.executeQuery("select * from item");) {
 			ArrayList<Item> Items = new ArrayList<>();
 			while (resultSet.next()) {
-				Items.add(itemFromResultSet(resultSet));
+				Items.add(domainFromResultSet(resultSet));
 			}
 			return Items;
 		} catch (SQLException e) {
@@ -69,7 +71,7 @@ public class ItemDaoMysql implements Dao<Item> {
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM item ORDER BY Item_id DESC LIMIT 1");) {
 			resultSet.next();
-			return itemFromResultSet(resultSet);
+			return domainFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -99,7 +101,7 @@ public class ItemDaoMysql implements Dao<Item> {
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT FROM item where Item id = " + Item_id);) {
 			resultSet.next();
-			return itemFromResultSet(resultSet);
+			return domainFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.info(e.getMessage());
@@ -134,4 +136,11 @@ public class ItemDaoMysql implements Dao<Item> {
 		}
 
 	}
+
+	public void Iterate_Item(Long Item_id) {
+		Item item = ReadItem(Item_id);
+		item.setQuantity(item.getQuantity() - 1);
+		update(item);
+	}
+
 }
