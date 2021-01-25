@@ -44,9 +44,9 @@ public class ItemController implements CrudController<Item> {
 		String Item_name = getInput();
 		LOGGER.info("Please enter the Price of the item");
 		Long Price = Long.valueOf(getInput());
-		LOGGER.info("Please enter the amount of Quantity for this item");
-		Long Quantity = Long.valueOf(getInput());
-		Item item = itemService.create(new Item(Item_name, Price, Quantity));
+		LOGGER.info("Please enter the amount of Stock this item has");
+		Long Stock = Long.valueOf(getInput());
+		Item item = itemService.create(new Item(Item_name, Price, Stock));
 		LOGGER.info("Item created");
 
 		// TODO Auto-generated method stub
@@ -64,9 +64,9 @@ public class ItemController implements CrudController<Item> {
 		String Item_name = getInput();
 		LOGGER.info("Please enter the updated Price of the item");
 		Long Price = Long.valueOf(getInput());
-		LOGGER.info("Please enter the updated Quantity amount of the item");
-		Long Quantity = Long.valueOf(getInput());
-		Item item = itemService.update(new Item(Item_id, Item_name, Price, Quantity));
+		LOGGER.info("Please enter the updated Stock amount of the item");
+		Long Stock = Long.valueOf(getInput());
+		Item item = itemService.update(new Item(Item_id, Item_name, Price, Stock));
 		LOGGER.info("Item Updated");
 		return item;
 	}
