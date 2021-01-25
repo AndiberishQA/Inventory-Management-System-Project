@@ -21,6 +21,10 @@ public class ItemDaoMysql implements Dao<Item> {
 	private String username;
 	private String password;
 
+	public ItemDaoMysql() {
+		super();
+	}
+
 	public ItemDaoMysql(String username, String password) {
 		this.jdbcConnectionUrl = "jdbc:mysql://localhost:3306/ims";
 		this.username = username;
@@ -40,8 +44,8 @@ public class ItemDaoMysql implements Dao<Item> {
 		Long Item_id = resultSet.getLong("Item_id");
 		String Item_Name = resultSet.getString("Item_Name");
 		Long Price = resultSet.getLong("Price");
-		Long Quantity = resultSet.getLong("Quantity");
-		return new Item(Item_id, Item_Name, Price, Quantity);
+		Long Stock = resultSet.getLong("Stock");
+		return new Item(Item_id, Item_Name, Price, Stock);
 
 	}
 
@@ -52,7 +56,7 @@ public class ItemDaoMysql implements Dao<Item> {
 	public List<Item> readAll() {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("select * from item");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM item");) {
 			ArrayList<Item> Items = new ArrayList<>();
 			while (resultSet.next()) {
 				Items.add(domainFromResultSet(resultSet));
@@ -85,8 +89,8 @@ public class ItemDaoMysql implements Dao<Item> {
 	public Item create(Item item) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("insert into item(Item_name, Price, Quantity) values('" + item.getItem_name()
-					+ "','" + item.getPrice() + "','" + item.getQuantity() + "')");
+			statement.executeUpdate("insert into item(Item_name, Price, Stock) values('" + item.getItem_name() + "','"
+					+ item.getPrice() + "','" + item.getStock() + "')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -115,7 +119,7 @@ public class ItemDaoMysql implements Dao<Item> {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("update item set Item_name ='" + item.getItem_name() + "', Price ='"
-					+ item.getPrice() + "', Quantity ='" + item.getQuantity() + "' where id =" + item.getItem_id());
+					+ item.getPrice() + "', Stock ='" + item.getStock() + "' where id =" + item.getItem_id());
 			return ReadItem(item.getItem_id());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -137,9 +141,9 @@ public class ItemDaoMysql implements Dao<Item> {
 
 	}
 
-	public void Iterate_Item(Long Item_id) {
+	public void UpdateStock(Long Item_id) {
 		Item item = ReadItem(Item_id);
-		item.setQuantity(item.getQuantity() - 1);
+		item.setStock(item.getStock() - 1);
 		update(item);
 	}
 

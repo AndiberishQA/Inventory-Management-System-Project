@@ -57,4 +57,13 @@ public class Utils {
 		return scanner.nextLine();
 	}
 
+	private static Utils instance;
+
+	public static Utils getInstance() {
+		if (instance == null) {
+			instance = new Utils();
+		}
+		return instance;
+	}
+
 }
