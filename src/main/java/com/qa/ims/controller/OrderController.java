@@ -61,7 +61,7 @@ public class OrderController implements CrudController<Order> {
 		Long Quantity;
 
 		switch (function) {
-		case A:
+		case ADD:
 			LOGGER.info("Please enter ID of item you want to add");
 			Item_id = Long.valueOf(getInput());
 			LOGGER.info("Please enter quantity of item ordered");
@@ -69,7 +69,7 @@ public class OrderController implements CrudController<Order> {
 			order = orderService.order_itemsUpdateAdd(order, Item_id, Quantity);
 			LOGGER.info("Order Updated");
 			return order;
-		case B:
+		case DEL:
 			LOGGER.info("Please enter ID of item you want to delete");
 			Item_id = Long.valueOf(getInput());
 			order = orderService.order_itemsUpdateDelete(order, Item_id);

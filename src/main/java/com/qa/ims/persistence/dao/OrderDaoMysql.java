@@ -1,6 +1,7 @@
 package com.qa.ims.persistence.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,15 +22,15 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 	private String username;
 	private String password;
 
-	public OrderDaoMysql(String jdbcConnectionUrl, String username, String password) {
-		super();
-		this.jdbcConnectionUrl = jdbcConnectionUrl;
+	public OrderDaoMysql(String username, String password) {
+		this.jdbcConnectionUrl = "jdbc:mysql://localhost:3306/ims";
 		this.username = username;
 		this.password = password;
+
 	}
 
-	public OrderDaoMysql(String username, String password) {
-		super();
+	public OrderDaoMysql(String jdbcConnectionUrl, String username, String password) {
+		this.jdbcConnectionUrl = "jdbc:mysql://localhost:3306/ims";
 		this.username = username;
 		this.password = password;
 	}
@@ -49,7 +50,7 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 
 	@Override
 	public Order create(Order order) {
-		try (Connection connection = DBUtils.getInstance().getConnection();
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			ResultSet resultSetPrice = statement
 					.executeQuery("SELECT Price FROM item WHERE Item_id=" + order.getItem_id());
@@ -59,10 +60,12 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 			}
 			Long SummaryPrice = order.getQuantity() * order.getPriceSum();
 			order.setPriceSum(SummaryPrice);
-			statement.executeUpdate("INSERT INTO order(Customer_id) VALUES(" + order.getCustomer_id()
-					+ "); INSERT INTO order_items(Order_id,Item_id,Quantity,PriceSum) VALUES(" + order.getItem_id()
-					+ "," + order.getQuantity() + "," + order.getPriceSum()
-					+ "(SELECT Order_id FROM order ORDER BY Order_id DESC LIMIT 1),");
+
+			String EstablishOrder = "INSERT INTO `order`(Customer_id) VALUES (" + order.getCustomer_id() + ")"
+					+ "); INSERT INTO order_items(Order_id,Item_id,Quantity,Overall_Price) VALUES((SELECT Order_id FROM order ORDER BY Order_id DESC LIMIT 1),"
+					+ order.getItem_id() + "," + order.getQuantity() + "," + order.getPriceSum() + ");";
+
+			statement.executeUpdate(EstablishOrder);
 
 			return readLatest();
 		} catch (Exception e) {

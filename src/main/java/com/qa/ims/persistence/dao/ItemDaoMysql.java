@@ -103,7 +103,7 @@ public class ItemDaoMysql implements Dao<Item> {
 	public Item ReadItem(Long Item_id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT FROM item where Item id = " + Item_id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM item where Item_id = " + Item_id);) {
 			resultSet.next();
 			return domainFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -119,7 +119,7 @@ public class ItemDaoMysql implements Dao<Item> {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("update item set Item_name ='" + item.getItem_name() + "', Price ='"
-					+ item.getPrice() + "', Stock ='" + item.getStock() + "' where id =" + item.getItem_id());
+					+ item.getPrice() + "', Stock ='" + item.getStock() + "' where Item_id =" + item.getItem_id());
 			return ReadItem(item.getItem_id());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -133,7 +133,7 @@ public class ItemDaoMysql implements Dao<Item> {
 	public void delete(long Item_id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("delete from item where item id = " + Item_id);
+			statement.executeUpdate("delete from item where Item_id = " + Item_id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

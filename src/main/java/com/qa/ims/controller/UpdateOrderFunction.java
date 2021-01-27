@@ -7,7 +7,7 @@ import com.qa.ims.utils.Utils;
 
 public enum UpdateOrderFunction {
 
-	A("Add new item to order"), B("Delete item from order"), STOP("To close the application");
+	ADD("Add new item to order"), DEL("Delete item from order"), STOP("To close the application");
 
 	public static final Logger LOGGER = LogManager.getLogger();
 
@@ -31,7 +31,7 @@ public enum UpdateOrderFunction {
 		UpdateOrderFunction function = null;
 		do {
 			try {
-				function = UpdateOrderFunction.valueOf(Utils.getInstance().getInput().toUpperCase());
+				function = UpdateOrderFunction.valueOf(Utils.getInput().toUpperCase());
 			} catch (IllegalArgumentException e) {
 				LOGGER.error("The selection was incorrect please retry");
 			}

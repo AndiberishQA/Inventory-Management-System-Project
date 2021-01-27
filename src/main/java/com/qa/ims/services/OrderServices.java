@@ -30,8 +30,7 @@ public class OrderServices implements CrudServicesModifiedOrder<Order> {
 
 	@Override
 	public Order order_itemsUpdateAdd(Order order, Long item_id, Long quantity) {
-
-		return null;
+		return orderCustomDaoInterface.order_itemsUpdateAdd(order, item_id, quantity);
 	}
 
 	@Override

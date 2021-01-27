@@ -80,6 +80,7 @@ public class ItemController implements CrudController<Item> {
 		LOGGER.info("Please enter the item ID of the item you would like to delete");
 		Long Item_id = Long.valueOf(getInput());
 		itemService.delete(Item_id);
+		LOGGER.info("Item Record has been deleted");
 
 	}
 

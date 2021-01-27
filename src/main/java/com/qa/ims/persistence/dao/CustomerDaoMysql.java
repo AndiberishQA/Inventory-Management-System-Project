@@ -97,10 +97,11 @@ public class CustomerDaoMysql implements Dao<Customer> {
 		return null;
 	}
 
-	public Customer readCustomer(Long id) {
+	public Customer readCustomer(Long Customer_id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT FROM customers WHERE Customer_id = " + id);) {
+				ResultSet resultSet = statement
+						.executeQuery("SELECT * FROM customers WHERE Customer_id = " + Customer_id);) {
 			resultSet.next();
 			return domainFromResultSet(resultSet);
 		} catch (Exception e) {
