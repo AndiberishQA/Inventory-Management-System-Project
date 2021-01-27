@@ -23,6 +23,10 @@ public class OrderServices implements CrudServicesModifiedOrder<Order> {
 		return orderCustomDaoInterface.create(order);
 	}
 
+	public Order createOrderLine(Order order) {
+		return orderCustomDaoInterface.createOrderLine(order);
+	}
+
 	@Override
 	public Order order_itemsUpdateDelete(Order order, Long item_id) {
 		return orderCustomDaoInterface.order_itemsUpdateDelete(order, item_id);

@@ -27,11 +27,12 @@ public class OrderController implements CrudController<Order> {
 	public Order create() {
 		LOGGER.info("Please enter a ID for Customer");
 		Long Customer_id = Long.valueOf(getInput());
+		Order Order = orderService.create(new Order(Customer_id));
 		LOGGER.info("Please enter a ID for the ordered item");
 		Long Item_id = Long.valueOf(getInput());
 		LOGGER.info("Please enter the quantity of the item ordered");
 		Long Quantity = Long.valueOf(getInput());
-		Order Order = orderService.create(new Order(Customer_id, Item_id, Quantity));
+		Order = orderService.createOrderLine(new Order(Item_id, Quantity));
 		LOGGER.info("Order has been created");
 		return Order;
 	}

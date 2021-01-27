@@ -12,6 +12,17 @@ public class Order {
 		super();
 	}
 
+	public Order(Long item_id, Long quantity) {
+		super();
+		Item_id = item_id;
+		Quantity = quantity;
+	}
+
+	public Order(Long customer_id) {
+		super();
+		Customer_id = customer_id;
+	}
+
 	public Order(Long customer_id, Long item_id, Long quantity) {
 		super();
 		Customer_id = customer_id;
@@ -34,12 +45,6 @@ public class Order {
 		Item_id = item_id;
 		Quantity = quantity;
 		PriceSum = priceSum;
-	}
-
-	public Order(Long order_id, Long customer_id) {
-		super();
-		Order_id = order_id;
-		Customer_id = customer_id;
 	}
 
 	@Override
