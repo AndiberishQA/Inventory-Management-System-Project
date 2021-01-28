@@ -1,0 +1,63 @@
+20210128 03:06:01 INFO  [main] ims.Ims Ims.java34 - What is your username
+20210128 03:06:06 INFO  [main] ims.Ims Ims.java36 - What is your password
+20210128 03:06:08 INFO  [main] ims.Ims Ims.java43 - Which entity would you like to use?
+20210128 03:06:08 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210128 03:06:08 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210128 03:06:08 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210128 03:06:08 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210128 03:06:10 INFO  [main] ims.Ims Ims.java53 - What would you like to do with order:
+20210128 03:06:10 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
+20210128 03:06:10 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
+20210128 03:06:10 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
+20210128 03:06:10 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
+20210128 03:06:10 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
+20210128 03:06:24 INFO  [main] controller.OrderController OrderController.java28 - Please enter a ID for Customer
+20210128 03:06:24 INFO  [main] controller.OrderController OrderController.java31 - Please enter a ID for the ordered item
+20210128 03:06:25 INFO  [main] controller.OrderController OrderController.java33 - Please enter the quantity of the item ordered
+20210128 03:06:26 INFO  [main] controller.OrderController OrderController.java36 - Order has been created
+20210128 03:06:26 INFO  [main] ims.Ims Ims.java43 - Which entity would you like to use?
+20210128 03:06:26 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210128 03:06:26 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210128 03:06:26 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210128 03:06:26 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210128 03:06:28 INFO  [main] ims.Ims Ims.java53 - What would you like to do with order:
+20210128 03:06:28 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
+20210128 03:06:28 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
+20210128 03:06:28 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
+20210128 03:06:28 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
+20210128 03:06:28 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
+20210128 03:06:29 INFO  [main] controller.OrderController OrderController.java28 - Please enter a ID for Customer
+20210128 03:06:30 INFO  [main] controller.OrderController OrderController.java31 - Please enter a ID for the ordered item
+20210128 03:06:31 INFO  [main] controller.OrderController OrderController.java33 - Please enter the quantity of the item ordered
+20210128 03:06:32 INFO  [main] controller.OrderController OrderController.java36 - Order has been created
+20210128 03:06:32 INFO  [main] ims.Ims Ims.java43 - Which entity would you like to use?
+20210128 03:06:32 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210128 03:06:32 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210128 03:06:32 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210128 03:06:32 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210128 03:06:34 INFO  [main] ims.Ims Ims.java53 - What would you like to do with order:
+20210128 03:06:34 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
+20210128 03:06:34 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
+20210128 03:06:34 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
+20210128 03:06:34 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
+20210128 03:06:34 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
+20210128 03:06:35 INFO  [main] controller.OrderController OrderController.java88 - Please enter the ID of the order you would like to delete
+20210128 03:06:37 INFO  [main] controller.OrderController OrderController.java91 - Order has been deleted
+20210128 03:06:37 INFO  [main] ims.Ims Ims.java43 - Which entity would you like to use?
+20210128 03:06:37 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210128 03:06:37 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210128 03:06:37 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210128 03:06:37 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210128 03:06:38 INFO  [main] ims.Ims Ims.java53 - What would you like to do with order:
+20210128 03:06:38 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
+20210128 03:06:38 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
+20210128 03:06:38 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
+20210128 03:06:38 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
+20210128 03:06:38 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
+20210128 03:06:39 INFO  [main] controller.OrderController OrderController.java44 - Order [Order_id=1, Customer_id =1, Item_id=1, Quantity=1, PriceSum= £20]
+20210128 03:06:39 INFO  [main] controller.OrderController OrderController.java44 - Order [Order_id=2, Customer_id =1, Item_id=2, Quantity=1, PriceSum= £20]
+20210128 03:06:39 INFO  [main] ims.Ims Ims.java43 - Which entity would you like to use?
+20210128 03:06:39 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20210128 03:06:39 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20210128 03:06:39 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20210128 03:06:39 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application

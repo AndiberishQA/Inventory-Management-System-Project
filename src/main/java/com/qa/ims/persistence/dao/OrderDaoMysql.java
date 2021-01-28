@@ -47,12 +47,12 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 
 	public Order domainFromResultSetRA(ResultSet resultSet) throws SQLException {
 		Long Order_id = resultSet.getLong("Order_id");
-//		Long Customer_id = resultSet.getLong("Customer_id");
-//		Long Item_id = resultSet.getLong("Item_id");
-//		Long Quantity = resultSet.getLong("Quantity");
+		Long Customer_id = resultSet.getLong("Customer_id");
+		Long Item_id = resultSet.getLong("Item_id");
+		Long Quantity = resultSet.getLong("Quantity");
 		Long PriceSum = resultSet.getLong("Overall_Price");
 
-		return new Order(Order_id, PriceSum);
+		return new Order(Order_id, Customer_id, Item_id, Quantity, PriceSum);
 	}
 	// Create Order
 
@@ -98,10 +98,6 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 				ResultSet resultSet = statement
 						.executeQuery("SELECT Order_id from `order` ORDER BY Order_id DESC LIMIT 1");) {
 
-//						"SELECT `order`.Order_id,order.Customer_id,SUM(order_items.Overall_Price) from order_items JOIN"
-//								+ " order ON order.order_id=order_items.order_id"
-//							+ " JOIN item ON item.Item_id=order_items.Item_id WHERE order.order_id=(SELECT Order_id FROM order ORDER BY Order_id DESC LIMIT 1) GROUP BY order.order_id;");) {
-
 			resultSet.next();
 
 			return domainFromResultSet(resultSet);
@@ -116,11 +112,9 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 	public List<Order> readAll() {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("select * from order_items ORDER BY Order_id DESC;");) {
+				ResultSet resultSet = statement.executeQuery(
 
-//			"SELECT `order`.Order_id,`order`.Customer_id,SUM(order_items.Overall_Price) from order_items"
-//					+ " JOIN `order` ON `order`.Order_id=order_items.Order_id JOIN item ON item.Item_id=order_items.Item_id"
-//					+ " GROUP BY `order`.Order_id ORDER BY `order`.Order_id;"
+						"select * from `order` o JOIN order_items oi ON o.order_id=oi.order_id");) {
 			List<Order> order = new ArrayList<>();
 			while (resultSet.next()) {
 				order.add(domainFromResultSetRA(resultSet));
@@ -172,8 +166,8 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 	public void delete(Long Order_id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("DELETE FROM order_items WHERE Order_id=" + Order_id + "; "
-					+ "DELETE FROM orders WHERE Order_id=" + Order_id + ";");
+			statement.executeUpdate("delete from order_items where Order_id = " + Order_id);
+			statement.executeUpdate("delete from `order` where Order_id = " + Order_id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -199,7 +193,7 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 
 	@Override
 	public Order createOrderLine(Order order) {
-		System.out.println(order.getQuantity());
+
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			ResultSet resultSetPrice = statement
