@@ -45,6 +45,15 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 		return new Order(Order_id);
 	}
 
+	public Order domainFromResultSetRA(ResultSet resultSet) throws SQLException {
+		Long Order_id = resultSet.getLong("Order_id");
+		Long Customer_id = resultSet.getLong("Customer_id");
+		Long Item_id = resultSet.getLong("Item_id");
+		Long Quantity = resultSet.getLong("Quantity");
+		Long PriceSum = resultSet.getLong("Overall_Price");
+
+		return new Order(Order_id, Customer_id, Item_id, Quantity, PriceSum);
+	}
 	// Create Order
 
 	@Override
@@ -55,7 +64,7 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 
 			String EstablishOrder = "INSERT INTO `order`(Customer_id) VALUES(" + order.getCustomer_id() + ");";
 			statement.executeUpdate(EstablishOrder);
-			System.out.println("pass 1");
+
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e);
@@ -89,10 +98,6 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 				ResultSet resultSet = statement
 						.executeQuery("SELECT Order_id from `order` ORDER BY Order_id DESC LIMIT 1");) {
 
-//						"SELECT order.Order_id,order.Customer_id,SUM(order_items.Overall_Price) from order_items JOIN"
-//								+ " order ON order.order_id=order_items.order_id"
-//							+ " JOIN item ON item.Item_id=order_items.Item_id WHERE order.order_id=(SELECT Order_id FROM order ORDER BY Order_id DESC LIMIT 1) GROUP BY order.order_id;");) {
-
 			resultSet.next();
 
 			return domainFromResultSet(resultSet);
@@ -108,11 +113,11 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery(
-						"SELECT `order`.Order_id,order.Customer_id,SUM(order_items.Overall_Price) from order_items "
-								+ "JOIN order ON `order`.Order_id=order_items.Order_id JOIN item ON item.Item_id=order_items.Item_id GROUP BY `order`.Order_id ORDER BY `order`.Order_id;");) {
+
+						"select * from `order` o JOIN order_items oi ON o.order_id=oi.order_id");) {
 			List<Order> order = new ArrayList<>();
 			while (resultSet.next()) {
-				order.add(domainFromResultSet(resultSet));
+				order.add(domainFromResultSetRA(resultSet));
 			}
 			return order;
 		} catch (SQLException e) {
@@ -161,8 +166,8 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 	public void delete(Long Order_id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("DELETE FROM order_items WHERE Order_id=" + Order_id + "; "
-					+ "DELETE FROM orders WHERE Order_id=" + Order_id + ";");
+			statement.executeUpdate("delete from order_items where Order_id = " + Order_id);
+			statement.executeUpdate("delete from `order` where Order_id = " + Order_id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -188,7 +193,7 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 
 	@Override
 	public Order createOrderLine(Order order) {
-		System.out.println(order.getQuantity());
+
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			ResultSet resultSetPrice = statement

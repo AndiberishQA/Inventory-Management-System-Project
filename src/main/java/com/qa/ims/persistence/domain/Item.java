@@ -69,7 +69,8 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [Item_id=" + Item_id + ", Item_name=" + Item_name + ", Price=" + Price + ", Stock=" + Stock + "]";
+		return "Item [Item_id:" + Item_id + ", Item_name:" + Item_name + ", Price £:" + Price + ", Stock_Count:" + Stock
+				+ "]";
 	}
 
 	@Override

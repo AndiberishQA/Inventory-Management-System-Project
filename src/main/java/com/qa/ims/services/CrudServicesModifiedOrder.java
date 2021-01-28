@@ -16,6 +16,6 @@ public interface CrudServicesModifiedOrder<T> {
 
 	Order order_itemsUpdateAdd(Order order, Long item_id, Long quantity);
 
-	void delete(Long id);
+	void delete(Long Order_id);
 
 }

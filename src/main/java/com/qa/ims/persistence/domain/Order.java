@@ -49,8 +49,8 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [Order_id=" + Order_id + ", Customer_id=" + Customer_id + ", Item_id=" + Item_id + ", Quantity="
-				+ Quantity + ", PriceSum=" + PriceSum + "]";
+		return "Order [Order_id=" + Order_id + ", Customer_id =" + Customer_id + ", Item_id=" + Item_id + ", Quantity="
+				+ Quantity + ", PriceSum= £" + PriceSum + "]";
 	}
 
 	public Long getOrder_id() {
