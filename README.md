@@ -1,6 +1,6 @@
 Coverage: 34%
 # Inventory Management System Project
-This project involved the design and creation of an Inventory Management System. This system employs CRUD functionality to interact with a MySql database (either local or remote). Hence it can be run on a Google Cloud Platform instance, aswell as cmd line and within the Eclipse IDE itself. 
+This project involved the design and creation of an Inventory Management System with which order, product and customer information can be aggregated and stored in a database.. This system employs CRUD functionality to interact with a MySql database (either local or remote). Hence it can be run on a Google Cloud Platform instance, aswell as cmd line and within the Eclipse IDE itself. 
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
