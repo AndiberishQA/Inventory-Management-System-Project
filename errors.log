@@ -1,34 +1,65 @@
-20210128 06:20:14 INFO  [main] ims.Ims Ims.java34 - What is your username
-20210128 06:20:19 INFO  [main] ims.Ims Ims.java36 - What is your password
-20210128 06:20:22 INFO  [main] ims.Ims Ims.java43 - Which entity would you like to use?
-20210128 06:20:22 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20210128 06:20:22 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20210128 06:20:22 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20210128 06:20:22 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20210128 06:20:24 INFO  [main] ims.Ims Ims.java53 - What would you like to do with order:
-20210128 06:20:24 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
-20210128 06:20:24 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
-20210128 06:20:24 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
-20210128 06:20:24 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
-20210128 06:20:24 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
-20210128 06:20:27 INFO  [main] controller.OrderController OrderController.java28 - Please enter a ID for Customer
-20210128 06:20:28 INFO  [main] controller.OrderController OrderController.java31 - Please enter a ID for the ordered item
-20210128 06:20:28 INFO  [main] controller.OrderController OrderController.java33 - Please enter the quantity of the item ordered
-20210128 06:20:32 INFO  [main] controller.OrderController OrderController.java36 - Order has been created
-20210128 06:20:32 INFO  [main] ims.Ims Ims.java43 - Which entity would you like to use?
-20210128 06:20:32 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20210128 06:20:32 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20210128 06:20:32 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20210128 06:20:32 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20210128 06:20:36 INFO  [main] ims.Ims Ims.java53 - What would you like to do with order:
-20210128 06:20:36 INFO  [main] controller.Action Action.java41 - CREATE: To save a new item into the database
-20210128 06:20:36 INFO  [main] controller.Action Action.java41 - READ: To read an item from the database
-20210128 06:20:36 INFO  [main] controller.Action Action.java41 - UPDATE: To change an item already in the database
-20210128 06:20:36 INFO  [main] controller.Action Action.java41 - DELETE: To remove an item from the database
-20210128 06:20:36 INFO  [main] controller.Action Action.java41 - RETURN: To return to domain selection
-20210128 06:20:37 INFO  [main] controller.OrderController OrderController.java44 - Order [Order_id=1, Customer_id =1, Item_id=1, Quantity=1, PriceSum= £20]
-20210128 06:20:37 INFO  [main] ims.Ims Ims.java43 - Which entity would you like to use?
-20210128 06:20:37 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20210128 06:20:37 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20210128 06:20:37 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20210128 06:20:37 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20210128 15:39:17 INFO  [main] controller.ItemController ItemController.java33 - Item [Item_id:null, Item_name:Chair, Price £:20, Stock_Count:12]
+20210128 15:39:17 INFO  [main] controller.ItemController ItemController.java33 - Item [Item_id:null, Item_name:Table, Price £:40, Stock_Count:10]
+20210128 15:39:17 INFO  [main] controller.ItemController ItemController.java80 - Please enter the item ID of the item you would like to delete
+20210128 15:39:17 INFO  [main] controller.ItemController ItemController.java83 - Item Record has been deleted
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java37 - Customer_id:null first_name:Chris surname:P
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java37 - Customer_id:null first_name:Rhys surname:T
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java37 - Customer_id:null first_name:Nic surname:J
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java61 - Please enter the id of the customer you would like to update
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java63 - Please enter a first name
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java65 - Please enter a surname
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java68 - Customer Updated
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java47 - Please enter a first name
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java49 - Please enter a surname
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java52 - Customer created
+20210128 15:39:17 INFO  [main] controller.CustomerController CustomerController.java77 - Please enter the id of the customer you would like to delete
+20210128 15:39:17 INFO  [main] controller.OrderController OrderController.java44 - Order [Order_id=1, Customer_id =1, Item_id=20, Quantity=10, PriceSum= £null]
+20210128 15:39:17 INFO  [main] controller.OrderController OrderController.java44 - Order [Order_id=2, Customer_id =2, Item_id=30, Quantity=20, PriceSum= £null]
+20210128 15:39:17 INFO  [main] controller.OrderController OrderController.java44 - Order [Order_id=3, Customer_id =3, Item_id=40, Quantity=20, PriceSum= £null]
+20210128 15:39:17 INFO  [main] controller.OrderController OrderController.java88 - Please enter the ID of the order you would like to delete
+20210128 15:39:17 INFO  [main] controller.OrderController OrderController.java91 - Order has been deleted
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:836)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:456)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:197)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - com.qa.ims.Ims.init(Ims.java:139)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - com.qa.ims.persistence.dao.CustomerDaoMysqlTest.init(CustomerDaoMysqlTest.java:31)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - java.base/java.lang.reflect.Method.invoke(Method.java:564)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)
+20210128 15:39:18 DEBUG [main] ims.Ims Ims.java149 - org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+20210128 15:39:18 ERROR [main] ims.Ims Ims.java151 - Unknown database 'ims_testdb'
+20210128 15:39:18 DEBUG [main] dao.CustomerDaoMysqlTest CustomerDaoMysqlTest.java40 - [Ljava.lang.StackTraceElement;@221b4175
+20210128 15:39:18 ERROR [main] dao.CustomerDaoMysqlTest CustomerDaoMysqlTest.java41 - Unknown database 'ims_testdb'
+20210128 15:39:18 DEBUG [main] dao.CustomerDaoMysql CustomerDaoMysql.java94 - [Ljava.lang.StackTraceElement;@42af751f
+20210128 15:39:18 ERROR [main] dao.CustomerDaoMysql CustomerDaoMysql.java95 - Access denied for user ''@'localhost' (using password: NO)
+20210128 15:39:18 DEBUG [main] dao.CustomerDaoMysql CustomerDaoMysql.java94 - [Ljava.lang.StackTraceElement;@477b8d7d
+20210128 15:39:18 ERROR [main] dao.CustomerDaoMysql CustomerDaoMysql.java95 - Access denied for user ''@'localhost' (using password: NO)
+20210128 15:39:18 DEBUG [main] dao.CustomerDaoMysql CustomerDaoMysql.java61 - [Ljava.lang.StackTraceElement;@3f937c0e
+20210128 15:39:18 ERROR [main] dao.CustomerDaoMysql CustomerDaoMysql.java62 - Access denied for user ''@'localhost' (using password: NO)
+20210128 15:39:18 DEBUG [main] dao.CustomerDaoMysqlTest CustomerDaoMysqlTest.java40 - [Ljava.lang.StackTraceElement;@54ebd3b4
+20210128 15:39:18 ERROR [main] dao.CustomerDaoMysqlTest CustomerDaoMysqlTest.java41 - Unknown database 'ims_testdb'
+20210128 15:39:18 DEBUG [main] dao.CustomerDaoMysql CustomerDaoMysql.java94 - [Ljava.lang.StackTraceElement;@4f60ac31
+20210128 15:39:18 ERROR [main] dao.CustomerDaoMysql CustomerDaoMysql.java95 - Access denied for user ''@'localhost' (using password: NO)
+20210128 15:39:18 DEBUG [main] dao.CustomerDaoMysql CustomerDaoMysql.java129 - [Ljava.lang.StackTraceElement;@267d9256
+20210128 15:39:18 ERROR [main] dao.CustomerDaoMysql CustomerDaoMysql.java130 - Access denied for user ''@'localhost' (using password: NO)
+20210128 15:39:18 DEBUG [main] dao.CustomerDaoMysqlTest CustomerDaoMysqlTest.java40 - [Ljava.lang.StackTraceElement;@6cb6a38c
+20210128 15:39:18 ERROR [main] dao.CustomerDaoMysqlTest CustomerDaoMysqlTest.java41 - Unknown database 'ims_testdb'
+20210128 15:39:18 DEBUG [main] dao.CustomerDaoMysql CustomerDaoMysql.java146 - [Ljava.lang.StackTraceElement;@3982fdf7
+20210128 15:39:18 ERROR [main] dao.CustomerDaoMysql CustomerDaoMysql.java147 - Access denied for user ''@'localhost' (using password: NO)

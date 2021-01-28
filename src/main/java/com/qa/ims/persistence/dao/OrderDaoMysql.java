@@ -167,7 +167,7 @@ public class OrderDaoMysql implements OrderCustomDaoInterface<Order> {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("delete from order_items where Order_id = " + Order_id);
-			statement.executeUpdate("delete from `order` where Order_id = " + Order_id);
+
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

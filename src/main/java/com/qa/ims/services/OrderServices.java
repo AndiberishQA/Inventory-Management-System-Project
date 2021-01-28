@@ -21,6 +21,7 @@ public class OrderServices implements CrudServicesModifiedOrder<Order> {
 	@Override
 	public Order create(Order order) {
 		return orderCustomDaoInterface.create(order);
+
 	}
 
 	public Order createOrderLine(Order order) {
@@ -38,7 +39,9 @@ public class OrderServices implements CrudServicesModifiedOrder<Order> {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(Long Order_id) {
+		orderCustomDaoInterface.delete(Order_id);
+
 		// TODO Auto-generated method stub
 
 	}
