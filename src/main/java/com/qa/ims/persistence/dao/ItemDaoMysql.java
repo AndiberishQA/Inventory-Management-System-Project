@@ -21,6 +21,10 @@ public class ItemDaoMysql implements Dao<Item> {
 	private String username;
 	private String password;
 
+	public ItemDaoMysql() {
+		super();
+	}
+
 	public ItemDaoMysql(String username, String password) {
 		this.jdbcConnectionUrl = "jdbc:mysql://localhost:3306/ims";
 		this.username = username;
@@ -35,12 +39,14 @@ public class ItemDaoMysql implements Dao<Item> {
 		this.password = password;
 	}
 
-	Item itemFromResultSet(ResultSet resultSet) throws SQLException {
+	@Override
+	public Item domainFromResultSet(ResultSet resultSet) throws SQLException {
 		Long Item_id = resultSet.getLong("Item_id");
 		String Item_Name = resultSet.getString("Item_Name");
 		Long Price = resultSet.getLong("Price");
-		Long Quantity = resultSet.getLong("Quantity");
-		return new Item(Item_id, Item_Name, Price, Quantity);
+		Long Stock = resultSet.getLong("Stock");
+		return new Item(Item_id, Item_Name, Price, Stock);
+
 	}
 
 //	 The read all function reads all items from database and returns
@@ -50,10 +56,10 @@ public class ItemDaoMysql implements Dao<Item> {
 	public List<Item> readAll() {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("select * from item");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM item");) {
 			ArrayList<Item> Items = new ArrayList<>();
 			while (resultSet.next()) {
-				Items.add(itemFromResultSet(resultSet));
+				Items.add(domainFromResultSet(resultSet));
 			}
 			return Items;
 		} catch (SQLException e) {
@@ -69,7 +75,7 @@ public class ItemDaoMysql implements Dao<Item> {
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM item ORDER BY Item_id DESC LIMIT 1");) {
 			resultSet.next();
-			return itemFromResultSet(resultSet);
+			return domainFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -83,8 +89,8 @@ public class ItemDaoMysql implements Dao<Item> {
 	public Item create(Item item) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("insert into item(Item_name, Price, Quantity) values('" + item.getItem_name()
-					+ "','" + item.getPrice() + "','" + item.getQuantity() + "')");
+			statement.executeUpdate("insert into item(Item_name, Price, Stock) values('" + item.getItem_name() + "','"
+					+ item.getPrice() + "','" + item.getStock() + "')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -97,9 +103,9 @@ public class ItemDaoMysql implements Dao<Item> {
 	public Item ReadItem(Long Item_id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT FROM item where Item id = " + Item_id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM item where Item_id = " + Item_id);) {
 			resultSet.next();
-			return itemFromResultSet(resultSet);
+			return domainFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.info(e.getMessage());
@@ -113,7 +119,7 @@ public class ItemDaoMysql implements Dao<Item> {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("update item set Item_name ='" + item.getItem_name() + "', Price ='"
-					+ item.getPrice() + "', Quantity ='" + item.getQuantity() + "' where id =" + item.getItem_id());
+					+ item.getPrice() + "', Stock ='" + item.getStock() + "' where Item_id =" + item.getItem_id());
 			return ReadItem(item.getItem_id());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -127,11 +133,18 @@ public class ItemDaoMysql implements Dao<Item> {
 	public void delete(long Item_id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("delete from item where item id = " + Item_id);
+			statement.executeUpdate("delete from item where Item_id = " + Item_id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
 
 	}
+
+	public void UpdateStock(Long Item_id) {
+		Item item = ReadItem(Item_id);
+		item.setStock(item.getStock() - 1);
+		update(item);
+	}
+
 }

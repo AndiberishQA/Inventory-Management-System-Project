@@ -33,11 +33,13 @@ public class CustomerDaoMysql implements Dao<Customer> {
 		this.password = password;
 	}
 
-	Customer customerFromResultSet(ResultSet resultSet) throws SQLException {
-		Long Customer_id = resultSet.getLong("id");
+	@Override
+	public Customer domainFromResultSet(ResultSet resultSet) throws SQLException {
+		Long Customer_id = resultSet.getLong("Customer_id");
 		String first_name = resultSet.getString("first_name");
 		String surname = resultSet.getString("surname");
 		return new Customer(Customer_id, first_name, surname);
+
 	}
 
 	/**
@@ -52,7 +54,7 @@ public class CustomerDaoMysql implements Dao<Customer> {
 				ResultSet resultSet = statement.executeQuery("select * from customers");) {
 			ArrayList<Customer> customers = new ArrayList<>();
 			while (resultSet.next()) {
-				customers.add(customerFromResultSet(resultSet));
+				customers.add(domainFromResultSet(resultSet));
 			}
 			return customers;
 		} catch (SQLException e) {
@@ -68,7 +70,7 @@ public class CustomerDaoMysql implements Dao<Customer> {
 				ResultSet resultSet = statement
 						.executeQuery("SELECT * FROM customers ORDER BY Customer_id DESC LIMIT 1");) {
 			resultSet.next();
-			return customerFromResultSet(resultSet);
+			return domainFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -95,12 +97,13 @@ public class CustomerDaoMysql implements Dao<Customer> {
 		return null;
 	}
 
-	public Customer readCustomer(Long id) {
+	public Customer readCustomer(Long Customer_id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT FROM customers where Customer_id = " + id);) {
+				ResultSet resultSet = statement
+						.executeQuery("SELECT * FROM customers WHERE Customer_id = " + Customer_id);) {
 			resultSet.next();
-			return customerFromResultSet(resultSet);
+			return domainFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

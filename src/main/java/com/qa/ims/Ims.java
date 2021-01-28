@@ -14,47 +14,70 @@ import org.apache.logging.log4j.Logger;
 import com.qa.ims.controller.Action;
 import com.qa.ims.controller.CrudController;
 import com.qa.ims.controller.CustomerController;
+import com.qa.ims.controller.ItemController;
+import com.qa.ims.controller.OrderController;
 import com.qa.ims.persistence.dao.CustomerDaoMysql;
+import com.qa.ims.persistence.dao.ItemDaoMysql;
+import com.qa.ims.persistence.dao.OrderDaoMysql;
 import com.qa.ims.persistence.domain.Domain;
 import com.qa.ims.services.CustomerServices;
+import com.qa.ims.services.ItemServices;
+import com.qa.ims.services.OrderServices;
 import com.qa.ims.utils.Utils;
 
 public class Ims {
 
 	public static final Logger LOGGER = LogManager.getLogger(Ims.class);
 
-	public void imsSystem() {
+	public void ImsSystem() {
+
 		LOGGER.info("What is your username");
 		String username = Utils.getInput();
 		LOGGER.info("What is your password");
 		String password = Utils.getInput();
 
 		init(username, password);
+		boolean stop = false;
+		do {
 
-		LOGGER.info("Which entity would you like to use?");
-		Domain.printDomains();
+			LOGGER.info("Which entity would you like to use?");
+			Domain.printDomains();
 
-		Domain domain = Domain.getDomain();
-		LOGGER.info("What would you like to do with " + domain.name().toLowerCase() + ":");
+			Domain domain = Domain.getDomain();
+			if (domain.name().equals("STOP")) {
+				LOGGER.info("Fairwell");
+				System.exit(0);
 
-		Action.printActions();
-		Action action = Action.getAction();
+			}
 
-		switch (domain) {
-		case CUSTOMER:
-			CustomerController customerController = new CustomerController(
-					new CustomerServices(new CustomerDaoMysql(username, password)));
-			doAction(customerController, action);
-			break;
-		case ITEM:
-			break;
-		case ORDER:
-			break;
-		case STOP:
-			break;
-		default:
-			break;
-		}
+			LOGGER.info("What would you like to do with " + domain.name().toLowerCase() + ":");
+
+			Action.printActions();
+			Action action = Action.getAction();
+
+			switch (domain) {
+			case CUSTOMER:
+				CustomerController customerController = new CustomerController(
+						new CustomerServices(new CustomerDaoMysql(username, password)));
+				doAction(customerController, action);
+				break;
+			case ITEM:
+				ItemController itemController = new ItemController(
+						new ItemServices(new ItemDaoMysql(username, password)));
+				doAction(itemController, action);
+				break;
+			case ORDER:
+				OrderController orderController = new OrderController(
+						new OrderServices(new OrderDaoMysql(username, password)));
+				doAction(orderController, action);
+				break;
+			case STOP:
+				return;
+			default:
+				break;
+			}
+		} while (!stop);
+		LOGGER.info("GOODBYE");
 
 	}
 

@@ -23,13 +23,13 @@ public class CustomerTest {
 	@Test
 	public void settersTest() {
 		assertNotNull(customer.getCustomer_id());
-		assertNotNull(customer.getFirstName());
+		assertNotNull(customer.getfirst_name());
 		assertNotNull(customer.getSurname());
 
-		customer.setId(null);
-		assertNull(customer.getId());
-		customer.setFirstName(null);
-		assertNull(customer.getFirstName());
+		customer.setCustomer_id(null);
+		assertNull(customer.getCustomer_id());
+		customer.setfirst_name(null);
+		assertNull(customer.getfirst_name());
 		customer.setSurname(null);
 		assertNull(customer.getSurname());
 
@@ -47,8 +47,8 @@ public class CustomerTest {
 
 	@Test
 	public void createCustomerWithId() {
-		assertEquals(1L, customer.getId(), 0);
-		assertEquals("Chris", customer.getFirstName());
+		assertEquals(1L, customer.getCustomer_id(), 0);
+		assertEquals("Chris", customer.getfirst_name());
 		assertEquals("Perrins", customer.getSurname());
 	}
 
@@ -64,39 +64,39 @@ public class CustomerTest {
 
 	@Test
 	public void customerNameNullButOtherNameNotNull() {
-		customer.setFirstName(null);
+		customer.setfirst_name(null);
 		assertFalse(customer.equals(other));
 	}
 
 	@Test
 	public void customerNamesNotEqual() {
-		other.setFirstName("rhys");
+		other.setfirst_name("rhys");
 		assertFalse(customer.equals(other));
 	}
 
 	@Test
 	public void checkEqualityBetweenDifferentObjectsNullName() {
-		customer.setFirstName(null);
-		other.setFirstName(null);
+		customer.setfirst_name(null);
+		other.setfirst_name(null);
 		assertTrue(customer.equals(other));
 	}
 
 	@Test
 	public void nullId() {
-		customer.setId(null);
+		customer.setCustomer_id(null);
 		assertFalse(customer.equals(other));
 	}
 
 	@Test
 	public void nullIdOnBoth() {
-		customer.setId(null);
-		other.setId(null);
+		customer.setCustomer_id(null);
+		other.setCustomer_id(null);
 		assertTrue(customer.equals(other));
 	}
 
 	@Test
 	public void otherIdDifferent() {
-		other.setId(2L);
+		other.setCustomer_id(2L);
 		assertFalse(customer.equals(other));
 	}
 
@@ -122,8 +122,8 @@ public class CustomerTest {
 	@Test
 	public void constructorWithoutId() {
 		Customer customer = new Customer("Chris", "Perrins");
-		assertNull(customer.getId());
-		assertNotNull(customer.getFirstName());
+		assertNull(customer.getCustomer_id());
+		assertNotNull(customer.getfirst_name());
 		assertNotNull(customer.getSurname());
 	}
 
