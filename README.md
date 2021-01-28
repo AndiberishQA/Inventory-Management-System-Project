@@ -47,7 +47,8 @@ and select coverage as, then select JUnit Test.
 Unit testing is a testing approach that targets the very fundamental building blocks of an application, the idea is to prove 
 that each 'unit' of the application is functioning as expected. Moreover, Unit testing is an automated process, which is designed to be reusable and provide reliable results.
 Lastly, the idea of unit testing is to ensure that our unit functions in isolation, this means we want to check that the performed actions of that unit/class meet our expectations.
-Unit Testing Example
+
+* **Unit Testing Example:**
 ```
 public class ItemTest {
 
@@ -101,6 +102,7 @@ public class ItemTest {
 Integration testing is a testing approach that targets the very fundamental building blocks of an application,
 the idea is to prove that each 'integration' of the application is functioning as expected.
 
+* **Integration Test Example:**
 ```
 @RunWith(MockitoJUnitRunner.class)
 public class OrderControllerTest {
